@@ -1,0 +1,6 @@
+{
+    //Aceita as terminal ser colorido na execução
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "java.configuration.updateBuildConfiguration": "interactive"
+    //Atualizando a bild para interativo
+}
