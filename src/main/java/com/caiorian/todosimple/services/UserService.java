@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.caiorian.todosimple.models.User;
-import com.caiorian.todosimple.repositories.TaskRepository;
 import com.caiorian.todosimple.repositories.UserRepository;
 
 
@@ -16,9 +15,6 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
-
-    @Autowired
-    private TaskRepository taskRepository;
 
     public User findById (Long id){
         Optional<User> user = this.userRepository.findById(id);
@@ -33,7 +29,6 @@ public class UserService {
     public User createUser (User obj){
         obj.setId(null);
         obj = this.userRepository.save(obj);
-        this.taskRepository.saveAll(obj.getTasks());
         return obj;
     }
 
@@ -53,4 +48,5 @@ public class UserService {
             throw new RuntimeException("Não é possível excluir pois hé entidades relacionadas!");
         }
     }
+    
 }
