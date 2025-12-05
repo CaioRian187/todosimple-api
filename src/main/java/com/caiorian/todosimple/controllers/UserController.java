@@ -3,7 +3,7 @@ package com.caiorian.todosimple.controllers;
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
+//import org.springframework.boot.web.server.servlet.context.ServletComponentScan;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
