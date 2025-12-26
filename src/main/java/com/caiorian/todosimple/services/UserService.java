@@ -8,6 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.caiorian.todosimple.models.User;
 import com.caiorian.todosimple.repositories.UserRepository;
+import com.caiorian.todosimple.services.exceptions.DataBidingViolationException;
+import com.caiorian.todosimple.services.exceptions.ObjectNotFoundException;
 
 
 @Service
@@ -20,7 +22,7 @@ public class UserService {
         Optional<User> user = this.userRepository.findById(id);
 
         //Retornando o usuario se ele não for vazio, caso contrario lança uma exception personalizada
-        return user.orElseThrow(() -> new RuntimeException(
+        return user.orElseThrow(() -> new ObjectNotFoundException(
             "Usuário não encontrado! Id:" + id + ", Tipo:" + User.class.getName())
         );
     }
@@ -45,7 +47,7 @@ public class UserService {
         try {
             this.userRepository.deleteById(id);
         } catch (Exception e) {
-            throw new RuntimeException("Não é possível excluir pois hé entidades relacionadas!");
+            throw new DataBidingViolationException("Não é possível excluir pois hé entidades relacionadas!");
         }
     }
     
